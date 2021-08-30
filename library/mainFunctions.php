@@ -40,8 +40,28 @@ function loadTemplate($smarty,$templateName){
 
 function d($value = null,$die = 1){
     echo 'Debug: <br/><pre>';
-    var_dump($value);
+    print_r($value);
   echo '</pre>';
 
   if ($die) die();
+}
+
+/**
+ * Преобразование результата работы  функций выборки  в ассоциативный массив
+ *
+ * @param $rs (RecordSet) набор строк - результат работы SELECT
+ * @return array|false
+ */
+
+function createSmartyRsArray($rs){
+
+    if (!$rs) return false;
+
+    $smartyRs = [];
+    while($row = mysqli_fetch_assoc($rs)){
+        $smartyRs[] = $row;
+    };
+
+    return $smartyRs;
+
 }

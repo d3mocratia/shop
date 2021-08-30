@@ -8,6 +8,29 @@ include_once '../config/db.php';
 
 
 /**
+ *Получить дочерние категории для категорий $catId
+ *
+ * @param integer $catId ID категории
+ * @return array массив дочерних категорий
+ */
+function getChildrenForCat($catId){
+
+    $db = mysqli_connect(HOSTNAME,USERNAME,USERPASSDB,DBNAME);
+
+    $sql = "SELECT * FROM categories WHERE parent_id = '{$catId}'";
+
+
+
+    $rs = mysqli_query($db,$sql);
+
+    return createSmartyRsArray($rs);
+
+}
+
+
+
+
+/**
  * Получить главные категорий с привязками дочерних
  *
  * @return array массив категорий
