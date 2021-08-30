@@ -21,7 +21,8 @@ function indexAction($smarty){
 
 
     $smarty->assign('pageTitle','Главная страница сайта');
-    $smarty->assign('rsCategories','$rsCategories');// Название переменной смарти вставляем в HTML шаблон {$rsCategories}пример
+    $smarty->assign('rsCategories',$rsCategories);// Название переменной смарти вставляем в HTML шаблон {$rsCategories}пример
+
 
 
     loadTemplate($smarty,'header');  // Обработка хедера

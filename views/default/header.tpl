@@ -6,12 +6,9 @@
 <body>
 
 <div class="header">
-    <h1>myShop - интернет магазин</h1>
+    <h1>myShop - интернет магазин </h1>
 </div>
 
-{include file="leftSidebar.tpl"}    {*подключение левого сайдбара*}
 
-<div class="center_column">
-    center column
 
 

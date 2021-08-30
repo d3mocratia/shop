@@ -6,6 +6,12 @@ include_once '../config/db.php';
  * Модель для таблицы категорий (categories)
  */
 
+
+/**
+ * Получить главные категорий с привязками дочерних
+ *
+ * @return array массив категорий
+ */
 function getAllMainCatsWithChildren(){
     $db = mysqli_connect(HOSTNAME,USERNAME,USERPASSDB,DBNAME);
 
@@ -15,6 +21,14 @@ function getAllMainCatsWithChildren(){
 
     $smartyRs = []; //Создаем массив смарти куда будем ложить данные из бд в виде массива
     while ($row = mysqli_fetch_assoc($rs)){
+
+        $rsChildren = getChildrenForCat($row['id']);
+
+        if ($rsChildren){
+            $row['children'] = $rsChildren;
+        }
+
+
         $smartyRs[]=$row;
     }
 
