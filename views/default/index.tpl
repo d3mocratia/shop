@@ -1,8 +1,31 @@
 
 {include file="leftSidebar.tpl"}    {*подключение левого сайдбара*}
 
-<div class="center_column">
-    center column
+
+<div class="container">
+
+<div class="row">
+
+        {foreach $rsProducts as $item name=products}
+            <div class="col">
+        <div class="card" style="width: 18rem;">
+
+            <img src="./images/products/{$item['image']}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">
+                    <a href="/product/{$item['id']}/"></a>
+                </h5>
+                <a href="/product/{$item['id']}/">{$item['name']}</a>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div>
+            </div>
+        {/foreach}
+
+
+
+
 
 
 

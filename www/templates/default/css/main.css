@@ -1,8 +1,27 @@
+.selector-for-some-widget {
+    box-sizing: content-box;
+}
+
+.card-img-top{
+
+    background-color: darkgrey;
+}
+
+.container{
+
+}
+
+
 body{
     padding: 0 ;
     display: block;
     background-color: cadetblue;
 }
+
+/*.container{*/
+/*    max-width: 1440px;*/
+/*    margin: 0 auto;*/
+/*}*/
 
 .hideMe{
     display: none;
@@ -40,3 +59,12 @@ body{
 .cartBox{
     padding: 5px 0px 5px 0px;
 }
+
+/*.block_products{*/
+/*    padding: 0px 30px 40px 0px;*/
+/*    float: left;*/
+/*}*/
+/*.products_img{*/
+/*    width: 100px;*/
+/*    background-color: darkgray;*/
+/*}*/
