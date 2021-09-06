@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.6, created on 2021-08-31 14:06:11
+<?php /* Smarty version Smarty-3.1.6, created on 2021-09-06 11:39:50
          compiled from "../views/default\header.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1995228471612896ae5b9450-02422925%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '9797888b337e03f99b06385b60a372bbb52d5e02' => 
     array (
       0 => '../views/default\\header.tpl',
-      1 => 1630407964,
+      1 => 1630917586,
       2 => 'file',
     ),
   ),
@@ -24,21 +24,43 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_612896ae6ae67')) {function content_612896ae6ae67($_smarty_tpl) {?><html>
+<?php if ($_valid && !is_callable('content_612896ae6ae67')) {function content_612896ae6ae67($_smarty_tpl) {?><!doctype html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title><?php echo $_smarty_tpl->tpl_vars['pageTitle']->value;?>
 </title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
     <link rel="stylesheet" href="<?php echo $_smarty_tpl->tpl_vars['templateWebPath']->value;?>
 css/main.css" type="text/css"/>
 </head>
 <body>
+<header>
+    <div class="container">
+        HEADER
+    </div>
 
-<div class="header">
-    <h1>myShop - интернет магазин </h1>
-</div>
+</header>
+
+<?php echo $_smarty_tpl->getSubTemplate ("leftSidebar.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
+
+
+
+
+
+
+<div class="centerColumn">
+
+
+
+
+
+
+
+
+
 
 
 

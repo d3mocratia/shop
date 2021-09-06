@@ -1,27 +1,24 @@
 
-{include file="leftSidebar.tpl"}    {*подключение левого сайдбара*}
+{*Тело страницы*}
 
 
-<div class="container">
 
-<div class="row">
 
-        {foreach $rsProducts as $item name=products}
-            <div class="col">
-        <div class="card" style="width: 18rem;">
 
-            <img src="./images/products/{$item['image']}" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">
-                    <a href="/product/{$item['id']}/"></a>
-                </h5>
-                <a href="/product/{$item['id']}/">{$item['name']}</a>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
+
+    {foreach $rsProducts as $item name=products}
+        <div style="float: left; padding: 0px 30px 40px 0px;">
+            <a  href="/product/{$item['id']}/">
+                <img src="./images/products/{$item['image']}" width="100" />
+            </a><br />
+            <a href="/product/{$item['id']}/">{$item['name']}</a>
         </div>
-            </div>
-        {/foreach}
+        {if $smarty.foreach.products.iteration mod 3 == 0}
+            <div style="clear: both;"></div>
+        {/if}
+
+    {/foreach}
+
 
 
 

@@ -17,7 +17,7 @@ function getChildrenForCat($catId){
 
     $db = mysqli_connect(HOSTNAME,USERNAME,USERPASSDB,DBNAME);
 
-    $sql = "SELECT * FROM categories WHERE parent_id = '{$catId}'";
+    $sql = "SELECT * FROM `categories` WHERE `parent_id` = '{$catId}'";
 
 
 
@@ -38,7 +38,7 @@ function getChildrenForCat($catId){
 function getAllMainCatsWithChildren(){
     $db = mysqli_connect(HOSTNAME,USERNAME,USERPASSDB,DBNAME);
 
-   $sql = 'SELECT * FROM categories WHERE parent_id = 0'; //Делаем запрос БД получить все из категорий где парент айди = 0
+   $sql = 'SELECT * FROM `categories` WHERE `parent_id` = 0'; //Делаем запрос БД получить все из категорий где парент айди = 0
 
     $rs = mysqli_query($db,$sql);//Вызываем функцию mysqli_query которая запрос отправляет
 
@@ -56,4 +56,22 @@ function getAllMainCatsWithChildren(){
     }
 
     return $smartyRs;
+}
+
+/**
+ * Получить данные категорий по Id
+ *
+ * @param integer $catId ID категорий
+ * @return array массив - строка категорий
+ */
+
+function getCatById($catId){
+    $db = mysqli_connect(HOSTNAME,USERNAME,USERPASSDB,DBNAME);
+
+    $catId = intval($catId);
+    $sql = "SELECT * FROM `categories` WHERE id='{$catId}'";
+
+    $rs = mysqli_query($db,$sql);
+
+    return mysqli_fetch_assoc($rs);
 }

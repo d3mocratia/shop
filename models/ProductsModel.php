@@ -23,3 +23,26 @@ function getLastProducts($limit = null){
 
     return createSmartyRsArray($rs);
 }
+
+
+
+/**
+ * Получить продукты для категории $itemId
+ *
+ * @param integer $itemId ID категории
+ * @return array массив продуктов
+ */
+
+function getProductsByCat($itemId){
+    $itemId = intval($itemId); // Функция intval — Возвращает целое значение переменной
+
+    $db = mysqli_connect(HOSTNAME,USERNAME,USERPASSDB,DBNAME); // Подключение к бд
+
+    $sql = "SELECT * FROM `products` WHERE `category_id` = '{$itemId}'"; // Подготавливаем запрос
+
+    $rs = mysqli_query($db,$sql); // сам запрос
+
+    return createSmartyRsArray($rs);
+
+}
+
