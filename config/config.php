@@ -17,7 +17,7 @@ const TEMPLATE_POSTFIX = '.tpl';
 
 
 //// Пути к файлам шаблонов в вебпространстве
-define("TEMPLATE_WEB_PATH","./templates/{$template}/");
+define("TEMPLATE_WEB_PATH","/templates/{$template}/");
 ////
 
 
