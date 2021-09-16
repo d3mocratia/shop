@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.6, created on 2021-09-07 14:45:16
+<?php /* Smarty version Smarty-3.1.6, created on 2021-09-16 12:11:45
          compiled from "../views/default\leftSidebar.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1315039134612896ae6becd3-89718930%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '36a8b7823c5fb55aa5d005880b5724f9d2093b50' => 
     array (
       0 => '../views/default\\leftSidebar.tpl',
-      1 => 1631015114,
+      1 => 1631782820,
       2 => 'file',
     ),
   ),
@@ -22,6 +22,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'rsCategories' => 0,
     'item' => 0,
     'itemChild' => 0,
+    'cartCntItems' => 0,
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
@@ -51,6 +52,13 @@ $_smarty_tpl->tpl_vars['itemChild']->_loop = true;
             <?php }?>
         <?php } ?>
     </div>
+
+    <div class="menuCaption">Корзина</div>
+    <a href="/cart/" title="Перейти в корзину">В корзину</a>
+    <span class="cartCntItems">
+        <?php if ($_smarty_tpl->tpl_vars['cartCntItems']->value>0){?><?php echo $_smarty_tpl->tpl_vars['cartCntItems']->value;?>
+<?php }else{ ?>пусто<?php }?>
+    </span>
 
 </div>
 

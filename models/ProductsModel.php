@@ -46,3 +46,24 @@ function getProductsByCat($itemId){
 
 }
 
+
+/**
+ * Получить данные продукта по ID
+ *
+ * @param $itemId  integer ID ПРОДУКТА
+ * @return array МАССИВ ДАННЫХ ПРОДУКТА
+ */
+
+function getProductById($itemId){
+
+    $db = mysqli_connect(HOSTNAME,USERNAME,USERPASSDB,DBNAME); // Подключение к бд
+
+    $itemId = intval($itemId);
+    $sql = "SELECT * FROM `products` WHERE `id`='{$itemId}'";
+
+    $rs = mysqli_query($db,$sql);
+
+    return mysqli_fetch_assoc($rs);
+
+}
+

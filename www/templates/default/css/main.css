@@ -11,7 +11,23 @@ body{
 
 }
 
+.hideme{
+    display: none;
+}
 
+.cartBox{
+    padding: 5px 0px 5px 0px;
+}
+
+.showHidden{
+    text-decoration: underline;
+    color: blue;
+    cursor: pointer;
+}
+
+.registerBoxHidden{
+    display: none;
+}
 
 .header{
     height: 70px;
@@ -28,12 +44,12 @@ body{
 }
 
 .centerColumn{
-    /*width: 600px;*/
+    width: 600px;
 
     /*display: flex;*/
     float: left;
     padding-left: 90px;
-    justify-content: space-between;
+    /*justify-content: space-between;*/
 }
 
 .footer{

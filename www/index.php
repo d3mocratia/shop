@@ -1,5 +1,14 @@
 <?php
 
+session_start(); //стартуем сессию
+
+// Если в сессии нет массива  корзины то создаем его
+if (!isset($_SESSION['cart'])){
+    $_SESSION['cart'] = [];
+}
+
+
+
 include_once '../config/config.php';   //Подключение файла общих конфигураций (переменные,константы)
 include_once '../config/db.php'; // Подключение файла соединения с БД mySQL
 include_once '../library/mainFunctions.php';  //Подключение файла с общими функциями
@@ -11,6 +20,7 @@ $controllerName = isset($_GET['controller']) ? ucfirst($_GET['controller']) : 'I
 // Определяем с какой функцией будем работать
 $actionName = isset($_GET['action']) ? $_GET['action'] : 'index';
 
-
+// инициализируем перемнную шаблонизатора количества элментов в корзине
+$smarty->assign('cartCntItems', count($_SESSION['cart']));
 
 loadPage($smarty,$controllerName,$actionName);

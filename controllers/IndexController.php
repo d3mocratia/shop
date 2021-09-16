@@ -31,4 +31,5 @@ function indexAction($smarty){
     loadTemplate($smarty,'index');     // Обработка индекса
     loadTemplate($smarty,'footer');
 
+
 }
