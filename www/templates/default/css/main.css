@@ -19,15 +19,32 @@ body{
     padding: 5px 0px 5px 0px;
 }
 
-.showHidden{
-    text-decoration: underline;
-    color: blue;
-    cursor: pointer;
+/*.showHidden{*/
+/*    text-decoration: underline;*/
+/*    color: blue;*/
+/*    cursor: pointer;*/
+/*}*/
+
+/*.registerBoxHidden{*/
+/*    display: none;*/
+/*}*/
+
+.email{
+    margin-bottom: 10px;
 }
 
-.registerBoxHidden{
-    display: none;
+.pwd_1{
+    margin-bottom: 10px;
 }
+
+.pwd_2{
+    margin-bottom: 10px;
+}
+
+.register_Btn{
+    margin-bottom: 10px;
+}
+
 
 .header{
     height: 70px;
