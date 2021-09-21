@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Контроллер функций пользователя
  */
@@ -14,7 +15,7 @@ include_once '../models/UsersModel.php';
  *
  * Инициализация сессионной переменной ($_SESSION['user'])
  *
- * @returns json массив данных нового пользователя
+ * @returns //json массив данных нового пользователя
  *
  */
 
@@ -33,5 +34,39 @@ function registerAction(){
 
     $resData = null;
     $resData = checkRegisterParams($email,$pwd1,$pwd2);
+
+    if (! $resData && checkUserEmail($email)){
+        $resData['success'] = false;
+        $resData['message'] = "Пользователь с таким {$email} уже зарегистрирован!";
+    }
+
+
+
+    if (! $resData){
+        $pwdMD5 = password_hash($pwd1,PASSWORD_BCRYPT);
+
+        $userData = registerNewUser($email,$pwdMD5,$name,$phone,$address);
+
+
+        if ($userData['success']){
+            $resData['success'] = 1;
+            $resData['message'] = 'Пользователь успешно зарегистрирован';
+
+            $userData = $userData[0];
+            $resData['userName'] = $userData['name'] ? $userData['name'] : $userData['email'];
+            $resData['userEmail'] = $email;
+
+            $_SESSION['user'] = $userData;
+            $_SESSION['user']['displayName'] = $userData['name'] ? $userData['name'] : $userData['email'];
+        }else{
+            $resData['success'] = 0;
+            $resData['message'] = 'Ошибка регистрации';
+
+        }
+    }
+
+
+    echo json_encode($resData);
+
 
 }

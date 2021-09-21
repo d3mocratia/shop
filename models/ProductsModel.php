@@ -15,7 +15,7 @@ function getLastProducts($limit = null){
 
     $sql = "SELECT * FROM `products` ORDER BY `id` DESC"; // Проверка на лимит $limit если лимит пришел отличным от null то мы добавляем к нашему SQL запросу .LIMIT($limit)
     if ($limit){
-        $sql .= " LIMIT {$limit}";
+        $sql .= " LIMIT '{$limit}'";
     }
 
 
@@ -82,7 +82,7 @@ function getProductsFromArray($itemsIds){
 
 $strIds = implode(', ',$itemsIds);
 
-$sql = "SELECT * FROM `products` WHERE `id` IN ({$strIds})";
+$sql = "SELECT * FROM `products` WHERE `id` IN ('{$strIds}')";
 
 $rs = mysqli_query($db,$sql);
 

@@ -38,7 +38,7 @@ function getChildrenForCat($catId){
 function getAllMainCatsWithChildren(){
     $db = mysqli_connect(HOSTNAME,USERNAME,USERPASSDB,DBNAME);
 
-   $sql = 'SELECT * FROM `categories` WHERE `parent_id` = 0'; //Делаем запрос БД получить все из категорий где парент айди = 0
+   $sql = "SELECT * FROM `categories` WHERE `parent_id` = 0"; //Делаем запрос БД получить все из категорий где парент айди = 0
 
     $rs = mysqli_query($db,$sql);//Вызываем функцию mysqli_query которая запрос отправляет
 
