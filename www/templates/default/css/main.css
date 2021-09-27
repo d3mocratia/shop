@@ -19,15 +19,22 @@ body{
     padding: 5px 0px 5px 0px;
 }
 
-/*.showHidden{*/
-/*    text-decoration: underline;*/
-/*    color: blue;*/
-/*    cursor: pointer;*/
-/*}*/
+.showHidden{
+    text-decoration: underline;
+    color: blue;
+    cursor: pointer;
+}
 
-/*.registerBoxHidden{*/
-/*    display: none;*/
-/*}*/
+.registerBoxHidden{
+    display: none;
+}
+
+.loginEmail{
+    margin-bottom: 10px;
+}
+.loginPwd{
+    margin-bottom: 10px;
+}
 
 .email{
     margin-bottom: 10px;

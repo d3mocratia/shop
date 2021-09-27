@@ -17,6 +17,29 @@
     </div>
 
 
+{if isset($arUser)}
+    <div class="userBox">
+    <a href="/user/" class="userLink">{$arUser['displayName']}</a><br>
+        <a href="/user/logout/" onclick="logout();">Выход</a>
+    </div>
+
+
+
+    {else}
+
+    <div class="userBox hideme">
+        <a href="#" class="userLink"></a><br>
+        <a href="/user/logout/">Выход</a>
+
+    </div>
+
+
+<div class="loginBox">
+    <div class="menuCaption">Авторизация</div>
+    <input type="text" class="loginEmail" name="loginEmail" value="" placeholder="Email"/><br>
+    <input type="password" class="loginPwd" name="loginPwd" value="" placeholder="Password"/><br>
+    <input type="button" onclick="login();" value="Войти"/><br>
+</div>
 
     <div class="registerBox">
         <div class="menuCaption showHidden" onclick="showRegisterBox();">Регистрация</div>
@@ -28,7 +51,7 @@
         </div>
     </div>
 
-
+{/if}
 
 
 

@@ -69,7 +69,7 @@ function getCatById($catId){
     $db = mysqli_connect(HOSTNAME,USERNAME,USERPASSDB,DBNAME);
 
     $catId = intval($catId);
-    $sql = "SELECT * FROM `categories` WHERE id='{$catId}'";
+    $sql = "SELECT * FROM `categories` WHERE `id` = '{$catId}'";
 
     $rs = mysqli_query($db,$sql);
 

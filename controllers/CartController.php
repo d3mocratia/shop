@@ -84,3 +84,8 @@ function indexAction($smarty){
     loadTemplate($smarty,'cart');
     loadTemplate($smarty,'footer');
 }
+
+
+function orderAction($smarty){
+
+}

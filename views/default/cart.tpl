@@ -5,6 +5,7 @@
 
 
 {else}
+    <form action="/cart/order/" method="POST">
     <h2>Данные товара</h2>
     <table>
         <tr>
@@ -57,6 +58,7 @@
         {/foreach}
 
     </table>
-
+        <input type="submit" value="Оформить заказ"/>
+    </form>
 
 {/if}
