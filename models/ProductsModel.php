@@ -10,20 +10,20 @@
  * @param integer null $limit Лимит товаров
  * @return array|false Массив товаров
  */
-function getLastProducts($limit = null){
-    $db = mysqli_connect(HOSTNAME,USERNAME,USERPASSDB,DBNAME);
+function getLastProducts($limit = null)
+{
+    $db = mysqli_connect(HOSTNAME, USERNAME, USERPASSDB, DBNAME);
 
     $sql = "SELECT * FROM `products` ORDER BY `id` DESC"; // Проверка на лимит $limit если лимит пришел отличным от null то мы добавляем к нашему SQL запросу .LIMIT($limit)
-    if ($limit){
+    if ($limit) {
         $sql .= " LIMIT {$limit}";
     }
 
 
-    $rs = mysqli_query($db,$sql);
+    $rs = mysqli_query($db, $sql);
 
     return createSmartyRsArray($rs);
 }
-
 
 
 /**
@@ -33,14 +33,15 @@ function getLastProducts($limit = null){
  * @return array массив продуктов
  */
 
-function getProductsByCat($itemId){
+function getProductsByCat($itemId)
+{
     $itemId = intval($itemId); // Функция intval — Возвращает целое значение переменной
 
-    $db = mysqli_connect(HOSTNAME,USERNAME,USERPASSDB,DBNAME); // Подключение к бд
+    $db = mysqli_connect(HOSTNAME, USERNAME, USERPASSDB, DBNAME); // Подключение к бд
 
     $sql = "SELECT * FROM `products` WHERE `category_id` = '{$itemId}'"; // Подготавливаем запрос
 
-    $rs = mysqli_query($db,$sql); // сам запрос
+    $rs = mysqli_query($db, $sql); // сам запрос
 
     return createSmartyRsArray($rs);
 
@@ -54,38 +55,41 @@ function getProductsByCat($itemId){
  * @return array МАССИВ ДАННЫХ ПРОДУКТА
  */
 
-function getProductById($itemId){
+function getProductById($itemId)
+{
 
-    $db = mysqli_connect(HOSTNAME,USERNAME,USERPASSDB,DBNAME); // Подключение к бд
+    $db = mysqli_connect(HOSTNAME, USERNAME, USERPASSDB, DBNAME); // Подключение к бд
 
     $itemId = intval($itemId);
     $sql = "SELECT * FROM `products` WHERE `id`='{$itemId}'";
 
-    $rs = mysqli_query($db,$sql);
+    $rs = mysqli_query($db, $sql);
 
     return mysqli_fetch_assoc($rs);
 
 }
 
 
-
 /**
  * Получить список продуктов из массива идентификаторов (ID`s)
  *
- * @param type $itemsIds массив идентификаторов продуктов
+ * @param  $itemsIds //массив идентификаторов продуктов
  * @returns array массив данных продуктов
  */
 
-function getProductsFromArray($itemsIds){
-    $db = mysqli_connect(HOSTNAME,USERNAME,USERPASSDB,DBNAME); // Подключение к бд
+function getProductsFromArray($itemsIds)
+{
+
+    $db = mysqli_connect(HOSTNAME, USERNAME, USERPASSDB, DBNAME); // Подключение к бд
 
 
-$strIds = implode(', ',$itemsIds);
+    $strIds = implode(',', $itemsIds);
 
-$sql = "SELECT * FROM `products` WHERE `id` IN ('{$strIds}')";
 
-$rs = mysqli_query($db,$sql);
+    $sql = "SELECT * FROM `products` WHERE `id` IN ({$strIds})";
 
-return createSmartyRsArray($rs);
+    $rs = mysqli_query($db, $sql);
+
+    return createSmartyRsArray($rs);
 }
 

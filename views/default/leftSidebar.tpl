@@ -33,7 +33,7 @@
 
     </div>
 
-
+{if ! isset($hideLoginBox)}
 <div class="loginBox">
     <div class="menuCaption">Авторизация</div>
     <input type="text" class="loginEmail" name="loginEmail" value="" placeholder="Email"/><br>
@@ -50,6 +50,7 @@
             <input type="button" class="register_Btn" onclick="registerNewUser()" value="Зарегистрироваться"/>
         </div>
     </div>
+    {/if}
 
 {/if}
 

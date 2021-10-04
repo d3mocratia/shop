@@ -25,8 +25,8 @@ function registerAction()
     $email = isset($_REQUEST['email']) ? $_REQUEST['email'] : null;  //Проверяем емайл на пустоту если емаил не пустой функция isset вернет true
     $email = trim($email);     // Удаляем пробелы спереди и сзади
 
-    $pwd1 = isset($_REQUEST['pwd_1']) ? $_REQUEST['pwd_1'] : null;
-    $pwd2 = isset($_REQUEST['pwd_2']) ? $_REQUEST['pwd_2'] : null;
+    $pwd1 = isset($_REQUEST['pwd1']) ? $_REQUEST['pwd1'] : null;
+    $pwd2 = isset($_REQUEST['pwd2']) ? $_REQUEST['pwd2'] : null;
 
     $phone = isset($_REQUEST['phone']) ? $_REQUEST['phone'] : null;
     $address = isset($_REQUEST['address']) ? $_REQUEST['address'] : null;

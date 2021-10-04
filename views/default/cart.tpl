@@ -30,6 +30,7 @@
         </tr>
 
         {foreach $rsProducts as $item name=products}
+
             <tr>
                 <td>
                     {$smarty.foreach.products.iteration}
@@ -39,7 +40,6 @@
                 </td>
                 <td>
                 <input name="itemCnt_{$item['id']}" class="itemCnt_{$item['id']}" type="text" value="1" onchange="conversionPrice({$item['id']})"/>
-{*                    {d($item)}*}
                 </td>
                 <td>
                     <span class="itemPrice_{$item['id']}" value="{$item['price']}">
@@ -58,7 +58,7 @@
         {/foreach}
 
     </table>
-        <input type="submit" value="Оформить заказ"/>
+        <input class="order_btn" type="submit" value="Оформить заказ"/>
     </form>
 
 {/if}
