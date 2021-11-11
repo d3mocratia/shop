@@ -32,3 +32,21 @@ function setPurchaseFromOrder($orderId,$cart){
     return mysqli_query($db,$sql);
 
 }
+
+
+
+
+function getPurchaseForOrder($orderId){
+
+    $db = mysqli_connect(HOSTNAME, USERNAME, USERPASSDB, DBNAME); // Подключение к бд
+
+    $sql = "SELECT `pe`.*, `ps`.`name`
+            FROM `purchase` as `pe` 
+            JOIN `products` as `ps` 
+            ON `pe`.product_id = `ps`.id
+            WHERE `pe`.order_id = {$orderId}";
+
+    $rs = mysqli_query($db,$sql);
+
+    return createSmartyRsArray($rs);
+}

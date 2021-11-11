@@ -9,15 +9,18 @@ const PATHPOSTFIX = 'Controller.php';
 
 // Используемый шаблон
 $template = 'default';
+$templateAdmin = 'admin';
 
 /// Пути к  файлам шаблонов (*.tpl)
 define("TEMPLATE_PREFIX", "../views/{$template}/");
+define("TEMPLATE_ADMIN_PREFIX", "../views/{$templateAdmin}/");
 const TEMPLATE_POSTFIX = '.tpl';
 ///
 
 
 //// Пути к файлам шаблонов в вебпространстве
 define("TEMPLATE_WEB_PATH","/templates/{$template}/");
+define("TEMPLATE_ADMIN_WEB_PATH","/templates/{$templateAdmin}/");
 ////
 
 

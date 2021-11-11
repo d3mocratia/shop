@@ -93,3 +93,98 @@ function getProductsFromArray($itemsIds)
     return createSmartyRsArray($rs);
 }
 
+
+/**
+ * Функция получения всех продуктов
+ */
+function getProducts(){
+    $db = mysqli_connect(HOSTNAME, USERNAME, USERPASSDB, DBNAME); // Подключение к бд
+
+    $sql = "SELECT * FROM `products` ORDER BY `category_id`";
+
+    $rs = mysqli_query($db,$sql);
+
+    return createSmartyRsArray($rs);
+}
+
+
+/**
+ * Функция заносит новый товар из админки в БД
+ *
+ * @param $itemName
+ * @param $itemPrice
+ * @param $itemDesc
+ * @param $itemCat
+ */
+function insertProduct($itemName, $itemPrice, $itemDesc, $itemCat){
+
+
+
+    $db = mysqli_connect(HOSTNAME, USERNAME, USERPASSDB, DBNAME); // Подключение к бд
+
+    $sql = "INSERT INTO `products` SET `name` = '{$itemName}',
+                                    `price` = '{$itemPrice}',
+                                    `description` = '{$itemDesc}',
+                                    `category_id` = '{$itemCat}'";
+
+    $rs = mysqli_query($db,$sql);
+
+    return $rs;
+
+}
+
+
+/**
+ * Функция обновления товара в админке
+ *
+ * @param $itemId //айдишник продукта
+ * @param $itemName // имя продукта
+ * @param $itemPrice // цена продукта
+ * @param $itemStatus // статус продукта
+ * @param $itemDesc // описание продкута
+ * @param $itemCat // категория продукта
+ * @param null $newFileName // картинка продукта
+ */
+function updateProduct($itemId, $itemName, $itemPrice, $itemStatus, $itemDesc, $itemCat, $newFileName = null){
+
+
+
+    $db = mysqli_connect(HOSTNAME, USERNAME, USERPASSDB, DBNAME); // Подключение к бд
+
+    $set = [];
+
+    if ($itemName){
+        $set[] = "`name` = '{$itemName}'";
+    }
+
+    if ($itemPrice > 0){
+        $set[] = "`price` = '{$itemPrice}'";
+    }
+
+    if ($itemStatus !== null){
+        $set[] = "`status` = '{$itemStatus}'";
+    }
+
+    if ($itemDesc){
+        $set[] = "`description` = '{$itemDesc}'";
+    }
+
+    if ($itemCat){
+        $set[] = "`category_id` = '{$itemCat}'";
+    }
+
+    if ($newFileName){
+        $set[] = "`image` = '{$newFileName}'";
+    }
+
+    $setStr = implode(", ", $set);
+
+    $sql = "UPDATE `products` SET {$setStr} WHERE `id` = '{$itemId}'";
+
+
+
+    $rs = mysqli_query($db,$sql);
+
+
+    return $rs;
+}

@@ -75,3 +75,88 @@ function getCatById($catId){
 
     return mysqli_fetch_assoc($rs);
 }
+
+
+/**
+ * Получить все главные категории (категории которые не являются дочерними)
+ *
+ * @return //array массив категории
+ */
+function getAllMainCategories(){
+
+    $db = mysqli_connect(HOSTNAME,USERNAME,USERPASSDB,DBNAME);
+
+    $sql = 'SELECT * FROM `categories` WHERE `parent_id` = 0';
+
+    $rs = mysqli_query($db,$sql);
+
+    return createSmartyRsArray($rs);
+
+    mysqli_close($db);
+}
+
+
+/**
+ * Добавление новой категории
+ *
+ * @param $catName //название категории
+ * @param int $catParentId //ID родительской категории
+ * @return //integer id новой категории
+ */
+
+function insertCat($catName,$catParentId = 0){
+    $db = mysqli_connect(HOSTNAME,USERNAME,USERPASSDB,DBNAME);
+
+    $sql = "INSERT INTO `categories` (`parent_id`,`name`) VALUES ('{$catParentId}', '{$catName}')";
+
+    mysqli_query($db,$sql);
+
+    //Получаем ID добавленной записи
+    $id = mysqli_insert_id($db);
+
+    return $id;
+
+}
+
+
+/**
+ * Получить все категории
+ */
+function getAllCategories(){
+    $db = mysqli_connect(HOSTNAME,USERNAME,USERPASSDB,DBNAME);
+
+    $sql = "SELECT * FROM `categories` ORDER BY `parent_id` ASC";
+
+    $rs = mysqli_query($db,$sql);
+
+    return createSmartyRsArray($rs);
+}
+
+
+/**
+ * Функция Обновления категории
+ *
+ * @param $itemId
+ * @param int $parentId
+ * @param string $newName
+ */
+function updateCategoryData($itemId, $parentId = -1, $newName = ''){
+    $db = mysqli_connect(HOSTNAME,USERNAME,USERPASSDB,DBNAME);
+
+
+    $set = [];
+
+    if ($newName){
+        $set[]= "`name` = '{$newName}'";
+    }
+
+    if ($parentId > -1){
+        $set[] = "`parent_id` = '{$parentId}'";
+    }
+
+    $setStr = implode(", ", $set);
+    $sql = "UPDATE `categories` SET {$setStr} WHERE `id` = '{$itemId}'";
+
+    $rs = mysqli_query($db,$sql);
+    return $rs;
+}

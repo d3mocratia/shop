@@ -17,6 +17,8 @@
 
 function makeNewOrder($name,$phone,$address){
 
+
+
     $db = mysqli_connect(HOSTNAME, USERNAME, USERPASSDB, DBNAME); // Подключение к бд
 
     $name = htmlspecialchars(mysqli_real_escape_string($db,$name));
@@ -31,6 +33,8 @@ function makeNewOrder($name,$phone,$address){
                              Тел: {$phone}<br/>
                              Адрес: {$address}<br/>";
 
+
+
     $dateCreated = date('Y.m.d H:i:s');
 
     $userIp = $_SERVER['REMOTE_ADDR'];
@@ -40,7 +44,10 @@ function makeNewOrder($name,$phone,$address){
     $sql =  "INSERT INTO `orders` (`user_id`,`date_created`,`date_payment`,`status`,`comment`,`user_ip`) VALUES 
      ('{$userId}','{$dateCreated}',null,'0','{$comment}','{$userIp}')";
 
+
     $rs = mysqli_query($db,$sql);
+
+
     // <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
     //Получаем ID созданного заказа в бд
@@ -59,3 +66,38 @@ function makeNewOrder($name,$phone,$address){
 
     return false;
 }
+
+
+/**
+ * Получить список заказов с привязкой к продуктам для пользователя $userId
+ *
+ * @param $userId //ID пользователя
+ * @return //array массив заказов с привязкой к продуктам
+ */
+
+
+function getOrdersWithProductsByUser($userId){
+
+    $db = mysqli_connect(HOSTNAME, USERNAME, USERPASSDB, DBNAME); // Подключение к бд
+
+    $userId = intval($userId);
+
+    $sql = "SELECT * FROM `orders` WHERE `user_id` = '{$userId}' ORDER BY `id` DESC";
+
+    $rs = mysqli_query($db,$sql);
+
+    $smartyRs = [];
+
+    while ($row = mysqli_fetch_assoc($rs)){
+     $rsChildren = getPurchaseForOrder($row['id']);
+
+     if ($rsChildren){
+         $row['children'] = $rsChildren;
+         $smartyRs[] = $row;
+     }
+    }
+    return $smartyRs;
+}
+
+
+

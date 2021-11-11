@@ -187,9 +187,9 @@ function saveorderAction()
     }
 
     // В БУДУЩЕМ СДЕЛАТЬ ПРОВЕРКУ НА ТО СУЩЕСТВУЮТ ЛИ ЭТИ ПЕРЕМЕННЫЕ
-    $name = $_SESSION['name'];
-    $phone = $_SESSION['phone'];
-    $address = $_SESSION['address'];
+    $name = $_SESSION['user']['name'];
+    $phone = $_SESSION['user']['phone'];
+    $address = $_SESSION['user']['address'];
 
     //создаем новый заказ и получаем его ID
     $orderId = makeNewOrder($name, $phone, $address);

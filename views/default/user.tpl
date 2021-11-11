@@ -18,7 +18,7 @@
     </tr>
     <tr>
         <td>Адрес</td>
-        <td><textarea  class="newAddress"  />{$arUser['address']}</textarea></td>
+        <td><textarea class="newAddress">{$arUser['address']}</textarea></td>
     </tr>
     <tr>
         <td>Новый пароль</td>
@@ -57,13 +57,22 @@
                 <td>{$smarty.foreach.orders.iteration}</td>
                 <td><a href="#" onclick="showProducts('{$item['id']}'); return false;" >Показать товар заказа</a></td>
                 <td>{$item['id']}</td>
+
+                {*/////////////////////////////////////////////////*}
+                {if $item['status'] == 0}
+                    {$item['status'] = 'Не оплачено'}
+                    {else}
+                    {$item['status'] = 'Оплачено'}
+                {/if}
+                {*/////////////////////////////////////////////////*}
+
                 <td>{$item['status']}</td>
                 <td>{$item['date_created']}</td>
                 <td>{$item['date_payment']}&nbsp;</td>
                 <td>{$item['comment']}</td>
             </tr>
 
-            <tr class="purchasesForOrderId_{$item['id']} hideme" >
+            <tr class="purchasesForOrderId_{$item['id']} hideme">
                 <td colspan="7">
                     {if $item['children']}
                         <table border="1" cellpadding="1" cellspacing="1" width="100%">
@@ -79,7 +88,7 @@
                                     <td>{$smarty.foreach.products.iteration}</td>
                                     <td>{$itemChild['product_id']}</td>
                                     <td><a href="/product/{$itemChild['product_id']}/">{$itemChild['name']}</a></td>
-                                    <td>{$itemChild['price']}</td>
+                                    <td>{$itemChild['price']} тг</td>
                                     <td>{$itemChild['amount']}</td>
                                 </tr>
                             {/foreach}
@@ -90,3 +99,7 @@
         {/foreach}
     </table>
 {/if}
+
+
+
+

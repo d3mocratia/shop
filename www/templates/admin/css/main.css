@@ -8,6 +8,8 @@
 
 body{
     padding: 0 ;
+    display: block;
+    background-color: cadetblue;
 
 }
 
@@ -40,13 +42,7 @@ body{
     margin-bottom: 10px;
 }
 
-.pwd_1{
-    margin-bottom: 10px;
-}
 
-.pwd_2{
-    margin-bottom: 10px;
-}
 
 .register_Btn{
     margin-bottom: 10px;
@@ -63,17 +59,28 @@ body{
     float: left;
 }
 
-.leftMenu, .loginBox, .registerBox{
+.loginBox, .registerBox{
     padding-bottom: 20px;
+
+}
+
+.leftMenu{
+
+display: flex;
+    flex-direction: column;
+
+}
+
+.leftMenu_link{
+    padding-bottom: 10px;
 }
 
 .centerColumn{
     width: 600px;
 
-    /*display: flex;*/
     float: left;
     padding-left: 90px;
-    /*justify-content: space-between;*/
+
 }
 
 .footer{
@@ -81,35 +88,11 @@ body{
 }
 
 .menuCaption{
-    padding: 3px;
+
     font-weight: bold;
+    padding-bottom: 10px;
 }
 
-
-
-/*.card-img-top{*/
-
-/*    background-color: darkgrey;*/
-/*}*/
-
-/*.container{*/
-/*    max-width: 1440px;*/
-
-
-/*}*/
-
-
-
-body{
-    padding: 0 ;
-    display: block;
-    background-color: cadetblue;
-}
-
-/*.container{*/
-/*    max-width: 1440px;*/
-/*    margin: 0 auto;*/
-/*}*/
 
 .hideMe{
     display: none;
@@ -123,6 +106,7 @@ body{
 .left_sidebar{
     width: 200px;
     float: left;
+
 }
 
 .leftMenu, .loginBox, .registerBox{
@@ -132,18 +116,13 @@ body{
 .center_column{
     width: 600px;
     float: left;
-    padding-left: 90px;
 }
 
 .footer{
     clear: both;
 }
 
-.menuCaption{
 
-    padding: 3px;
-    font-weight: bold;
-}
 
 .cartBox{
     padding: 5px 0px 5px 0px;
@@ -153,12 +132,8 @@ body{
     padding: 0px 30px 40px 0px;
     float: left;
 }
-/*.products_img{*/
-/*    width: 100px;*/
-/*    background-color: darkgray;*/
-/*}*/
 
 
 .order_btn{
-   margin-top: 30px;
+    margin-top: 30px;
 }

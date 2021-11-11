@@ -6,8 +6,9 @@
 
 // Подключаем модели
 include_once '../models/CategoriesModel.php';
-//include_once '../models/OrdersModel.php';
 include_once '../models/UsersModel.php';
+include_once '../models/OrdersModel.php';
+include_once '../models/PurchaseModel.php';
 
 
 /**
@@ -135,8 +136,13 @@ function indexAction($smarty)
     //Получаем список категорий для меню
     $rsCategories = getAllMainCatsWithChildren();
 
+    //Получение списка заказов пользователя
+    $rsUserOrders = getCurUserOrders();
+
+
     $smarty->assign('pageTitle', 'Страница пользователя');
     $smarty->assign('rsCategories', $rsCategories);
+    $smarty->assign('rsUserOrders', $rsUserOrders);
 
     loadTemplate($smarty, 'header');
     loadTemplate($smarty, 'user');
