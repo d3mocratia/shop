@@ -101,3 +101,99 @@ function getOrdersWithProductsByUser($userId){
 
 
 
+
+
+function getOrders(){
+
+    $db = mysqli_connect(HOSTNAME, USERNAME, USERPASSDB, DBNAME); // Подключение к бд
+
+
+    //Выбрать все поля из таблицы orders (присваиваем ей псевдоним `o`) и выбираем юзер нейм , емайл , телефон , адресс из таблицы `users`
+    // (присваиваем псевдоним `u`)
+    $sql = "SELECT o.*, u.name, u.email, u.phone, u.address FROM `orders` AS `o` 
+            LEFT JOIN `users` AS `u` ON o.user_id = u.id ORDER BY `id` DESC ";
+
+
+
+    $rs = mysqli_query($db,$sql);
+
+    $smartyRs = [];
+
+    while ($row = mysqli_fetch_assoc($rs)){
+
+        $rsChildren = getProductsFromOrder($row['id']);
+
+        if ($rsChildren){
+            $row['children'] = $rsChildren;
+            $smartyRs[] = $row;
+        }
+    }
+
+    return $smartyRs;
+}
+
+
+/**
+ * Получить продукты заказа
+ *
+ * @param $orderId
+ */
+function getProductsFromOrder($orderId){
+    $db = mysqli_connect(HOSTNAME, USERNAME, USERPASSDB, DBNAME); // Подключение к бд
+
+    $sql = "SELECT * FROM `purchase` LEFT JOIN `products` ON purchase.product_id = products.id WHERE (`order_id` = '{$orderId}')";
+
+    $rs = mysqli_query($db,$sql);
+
+    return createSmartyRsArray($rs);
+}
+
+
+/**
+ * Функция обновления статуса заказа
+ *
+ * @param $itemId
+ * @param $status
+ * @return bool|mysqli_result
+ */
+function updateOrderStatus($itemId,$status){
+
+    $db = mysqli_connect(HOSTNAME, USERNAME, USERPASSDB, DBNAME); // Подключение к бд
+
+    $status = intval($status);
+
+    $sql = "UPDATE `orders` SET `status` = '{$status}' WHERE `id` = '{$itemId}'";
+
+
+
+    $rs = mysqli_query($db,$sql);
+
+
+    return $rs;
+
+}
+
+
+/**
+ * Функция обновления даты оплаты
+ *
+ * @param $itemId
+ * @param $datePayment
+ * @return bool|mysqli_result
+ */
+function updateOrderDatePayment($itemId,$datePayment){
+
+    $db = mysqli_connect(HOSTNAME, USERNAME, USERPASSDB, DBNAME); // Подключение к бд
+
+    $sql = "UPDATE `orders` SET `date_payment` = '{$datePayment}' WHERE `id` = '{$itemId}'";
+
+    $rs = mysqli_query($db,$sql);
+
+    return $rs;
+}
+
+
+
+
+
+

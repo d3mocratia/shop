@@ -1,5 +1,5 @@
 <div class="left_sidebar">
-{*{d($rsCategories)}*}
+
     <div class="Menu">
         <div class="menuCaption">Меню:  </div>
         {foreach $rsCategories as $item}

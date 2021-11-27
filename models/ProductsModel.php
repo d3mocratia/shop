@@ -188,3 +188,18 @@ function updateProduct($itemId, $itemName, $itemPrice, $itemStatus, $itemDesc, $
 
     return $rs;
 }
+
+
+/**
+ * Функция обновления картинки товара с админки
+ * @param $itemId
+ * @param $newFileName
+ */
+function updateProductImage($itemId , $newFileName){
+
+
+    $rs = updateProduct($itemId, null, null, null, null, null, $newFileName);
+
+    return $rs;
+
+}

@@ -10,6 +10,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="{$templateWebPath}css/main.css" type="text/css"/>
 
+
     <title>{$pageTitle}</title>
 </head>
 

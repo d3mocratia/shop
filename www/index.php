@@ -2,6 +2,7 @@
 
 session_start(); //стартуем сессию
 
+
 // Если в сессии нет массива  корзины то создаем его
 if (!isset($_SESSION['cart'])){
     $_SESSION['cart'] = [];
@@ -26,7 +27,12 @@ if (isset($_SESSION['user'])){
     $smarty->assign('arUser',$_SESSION['user']);
 }
 
+
+
 // инициализируем перемнную шаблонизатора количества элементов в корзине
 $smarty->assign('cartCntItems', count($_SESSION['cart']));
 
 loadPage($smarty,$controllerName,$actionName);
+
+
+

@@ -15,7 +15,7 @@
  *
  * @return array массив данных пользователя
  */
-function registerNewUser($email, $pwdMD5, $name, $phone, $address)
+function registerNewUser($email, $pwdMD5, $name, $phone, $address , $isAdmin = 0)
 {
 
     $db = mysqli_connect(HOSTNAME, USERNAME, USERPASSDB, DBNAME); // Подключение к бд
@@ -26,7 +26,7 @@ function registerNewUser($email, $pwdMD5, $name, $phone, $address)
     $address = htmlspecialchars(mysqli_real_escape_string($db, $address));
 
 
-    $sql = "INSERT INTO `users` (`email`,`pwd`,`name`,`phone`,`address`) VALUES ('{$email}','{$pwdMD5}','{$name}','{$phone}','{$address}')";
+    $sql = "INSERT INTO `users` (`email`,`pwd`,`name`,`phone`,`address`,`is_admin`) VALUES ('{$email}','{$pwdMD5}','{$name}','{$phone}','{$address}','{$isAdmin}')";
 
     $rs = mysqli_query($db, $sql);
 
@@ -35,6 +35,7 @@ function registerNewUser($email, $pwdMD5, $name, $phone, $address)
 
         $rs = mysqli_query($db, $sql);
         $rs = createSmartyRsArray($rs);
+
 
         if (isset($rs[0])) {
             $rs['success'] = 1;
@@ -127,7 +128,9 @@ function loginUser($email, $pwd)
 
 
     $rs = mysqli_query($db, $sql);
+
     $rs = createSmartyRsArray($rs);
+
 
 
     if (isset($rs[0])) {
@@ -142,6 +145,7 @@ function loginUser($email, $pwd)
     } else {
         $rs['success'] = 0;
     }
+
     return $rs;
 
 }

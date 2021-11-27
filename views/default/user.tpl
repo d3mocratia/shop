@@ -55,7 +55,9 @@
         {foreach $rsUserOrders as $item name=orders}
             <tr>
                 <td>{$smarty.foreach.orders.iteration}</td>
-                <td><a href="#" onclick="showProducts('{$item['id']}'); return false;" >Показать товар заказа</a></td>
+                <td>
+                    <a href="#" onclick="showProducts('{$item['id']}'); return false;" >Показать товар заказа</a>
+                </td>
                 <td>{$item['id']}</td>
 
                 {*/////////////////////////////////////////////////*}
